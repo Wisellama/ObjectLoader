@@ -1,0 +1,11 @@
+size 100 100
+
+camera 0 0 10 0 0 0 0 1 0 30
+
+point 10 10 10 1 1 1
+
+ambient .1 .1 .1
+diffuse .4 .4 .4
+specular .8 .8 .8
+shininess 16
+object sheep.obj
