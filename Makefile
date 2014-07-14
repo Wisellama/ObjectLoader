@@ -27,6 +27,24 @@ DESTDIR = /
 INSTALL_PREFIX = usr/local
 #### END PROJECT SETTINGS ####
 
+## Git repo tagging info from the readme
+#
+# Tags should be made in the format
+# "vMAJOR.MINOR.PATCH[-description]", where MAJOR, MINOR and PATCH are
+# numeric. The following macros will be generated and passed to the
+# preprocessor:
+# 
+#   VERSION_MAJOR (int) - The major version number from the most recent tag.
+#   VERSION_MINOR (int) - The minor version number from the most recent tag.
+#   VERSION_PATCH (int) - The patch version number from the most recent tag.
+#   VERSION_REVISION (int) - The number of commits since the most recent tag.
+#   VERSION_HASH (string) - The SHA of the current commit. Includes
+#   the "-dirty" suffix if there are uncommited changes.
+#
+# If the makefile is not used in a git repository, or is in a
+# repository with no tags, the version macros are not created.
+##
+
 # Generally should not need to edit below this line
 
 # Shell used in this makefile
