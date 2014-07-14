@@ -33,6 +33,7 @@ public:
   vector<Object> objects;
   Camera camera;
   float translate_step, rotate_step;
+  double mousex, mousey;
   GLFWwindow* window;
   Shader shader;
 };
@@ -52,6 +53,8 @@ void initGlobals() {
   // globals
   globals.translate_step = 0.05f;
   globals.rotate_step = 0.01f;
+  globals.mousex = viewport.width/2.0;
+  globals.mousey = viewport.height/2.0;
 }
 
 // pre-declaration
@@ -112,27 +115,28 @@ void moveCamera() {
   glm::vec3 forward = globals.camera.getViewDir();
   glm::vec3 right = glm::cross(forward,up);
 
-  // rotation
-  if (glfwGetKey(globals.window, 'J') == GLFW_PRESS) {
-    globals.camera.rotate(r*up);
+  float epsilon = 0.001f;
+  float scale = 2000.0f;
+
+  // mouse
+  double xpos, ypos;
+  double xcenter = viewport.width/2.0;
+  double ycenter = viewport.height/2.0;
+  glfwGetCursorPos(globals.window, &xpos, &ypos);
+  float diffx = (xcenter-xpos);
+  float diffy = (ycenter-ypos);
+
+  if (abs(diffy) > epsilon) {
+    globals.camera.rotate(diffy/scale*right);
   }
-  if (glfwGetKey(globals.window, 'L') == GLFW_PRESS) {
-    globals.camera.rotate(-r*up);
-  }
-  if (glfwGetKey(globals.window, 'I') == GLFW_PRESS) {
-    globals.camera.rotate(r*right);
-  }
-  if (glfwGetKey(globals.window, 'K') == GLFW_PRESS) {
-    globals.camera.rotate(-r*right);
-  }
-  if (glfwGetKey(globals.window, 'U') == GLFW_PRESS) {
-    globals.camera.rotate(-r*forward);
-  }
-  if (glfwGetKey(globals.window, 'O') == GLFW_PRESS) {
-    globals.camera.rotate(r*forward);
+  if (abs(diffx) > epsilon) {
+    globals.camera.rotate(diffx/scale*up);
   }
 
-  // translation
+  glfwSetCursorPos(globals.window, xcenter, ycenter);
+
+
+  // keyboard
   if (glfwGetKey(globals.window, 'A') == GLFW_PRESS) {
     globals.camera.translate(-t*right);
   }
@@ -146,10 +150,10 @@ void moveCamera() {
     globals.camera.translate(-t*forward);
   }
   if (glfwGetKey(globals.window, 'Q') == GLFW_PRESS) {
-    globals.camera.translate(t*up);
+    globals.camera.rotate(-r*forward);
   }
   if (glfwGetKey(globals.window, 'E') == GLFW_PRESS) {
-    globals.camera.translate(-t*up);
+    globals.camera.rotate(r*forward);
   }
 }
 
