@@ -7,7 +7,8 @@ new OpenGL standard (it is very different from versions 1 and 2).
 
 To compile, simply type 'make'.  
 
-usage:  
+usage:
+
     $ obj-loader <file.obj>  
     
 If no file is given, the screen will just be black. You can actually
