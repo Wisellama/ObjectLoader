@@ -49,8 +49,33 @@ void Camera::translate(vec3 v) {
   this->target += v; // keep the view direction constant
 }
 
-// axis-angle rotation
 void Camera::rotate(vec3 v) {
+  this->rotateQuat(v);
+  //this->rotateAxisAngle(v); // to change easily
+}
+
+// quaternion rotation
+void Camera::rotateQuat(vec3 v) {
+  v = -v;
+  float angle = length(v);
+  vec3 w = normalize(v);
+
+  glm::quat viewDir (0, normalize(this->getViewDir()));
+  viewDir = glm::rotate(viewDir, angle, w);
+
+  glm::quat upDir (0, normalize(this->getUpDir()));
+  upDir = glm::rotate(upDir, angle, w);
+  
+  vec3 u = axis(viewDir);
+  this->up = axis(upDir);
+
+  vec3 view = this->target - this->position;
+  this->target = this->position + u*length(view);
+}
+
+// axis-angle (exponential map) rotation
+// doesn't have SLERP, so a more noticeable drift occurs
+void Camera::rotateAxisAngle(vec3 v) {
   float angle = length(v);
   vec3 w = normalize(v);
   vec3 a = this->getViewDir();

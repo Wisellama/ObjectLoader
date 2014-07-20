@@ -52,7 +52,7 @@ void initGlobals() {
 
   // globals
   globals.translate_step = 0.05f;
-  globals.rotate_step = 0.01f;
+  globals.rotate_step = 0.03f;
   globals.mousex = viewport.width/2.0;
   globals.mousey = viewport.height/2.0;
 }
@@ -116,7 +116,7 @@ void moveCamera() {
   glm::vec3 right = glm::cross(forward,up);
 
   float epsilon = 0.001f;
-  float scale = 2000.0f;
+  float scale = 1000.0f;
 
   // mouse
   double xpos, ypos;
