@@ -1,7 +1,8 @@
 /**
    Camera - storage class for the viewer's camera
 
-   Contains position, viewing direction, and up direction.
+   Contains position, viewing direction, up direction, and target
+   along with functions for movement and rotation.
  */
 
 #ifndef CAMERA_H

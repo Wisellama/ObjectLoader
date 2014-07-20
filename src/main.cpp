@@ -1,3 +1,23 @@
+/**
+   obj-loader is a simple program designed to render .obj files using
+   OpenGL 3.2, mainly so that I could learn the new OpenGL standard
+   (it is very different from versions 1 and 2).
+
+   To compile, simply type 'make'.
+
+   usage:
+   $ obj-loader <file.obj>
+
+   If no file is given, the screen will just be black. You can
+   actually give it multiple .obj files, but I never implemented a way
+   to move them around which means they'll all overlap each other.
+
+   This program depends on the following:
+   OpenGL 3.2+ (GL and GLEW)
+   glm (OpenGL Math library)
+   glfw (similar to GLUT, but newer. Creates the window and such)
+ */
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 

@@ -116,8 +116,8 @@ void Object::parseObjectFile(string filename) {
       this->triangles.push_back(t);
     }
 
-    // I didn't implement the entire .obj specification
-    // rest is garbled gooky shit.
+    // I didn't implement the entire .obj specification. The rest is
+    // garbled gooky shit. GARBAGE I TELL YOU! GARBAGE!
   }
 }
 

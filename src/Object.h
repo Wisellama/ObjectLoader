@@ -60,6 +60,7 @@ public:
   void setSpecularColor(glm::vec3 c);
   void setShininess(float s);
 
+
 private:
   vector<Triangle> triangles;
   vector<glm::vec3> vertices;

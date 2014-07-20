@@ -20,8 +20,6 @@ int Triangle::init(uint a, uint b, uint c,
   this->vertices = v;
   this->vertexNormals = vn;
 
-  this->elementWasSet = false;
-
   return 0;
 }
 
@@ -46,15 +44,3 @@ std::vector<uint> Triangle::getVertexNormals() const {
   return this->vertexNormals;
 }
 
-void Triangle::setElementBase(uint e) {
-  this->element = e;
-  this->elementWasSet = true;
-}
-
-uint Triangle::getElementBase() const {
-  return this->element;
-}
-
-bool Triangle::elementIsSet() const {
-  return this->elementWasSet;
-}
