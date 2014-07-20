@@ -175,6 +175,12 @@ void moveCamera() {
   if (glfwGetKey(globals.window, 'E') == GLFW_PRESS) {
     globals.camera.rotate(r*forward);
   }
+  if (glfwGetKey(globals.window, 'Z') == GLFW_PRESS) {
+    globals.camera.translate(-t*up);
+  }
+  if (glfwGetKey(globals.window, 'X') == GLFW_PRESS) {
+    globals.camera.translate(t*up);
+  }
 }
 
 GLFWwindow* initializeGlfw() {
