@@ -22,11 +22,12 @@ OpenGL 3.2+ (GL and GLEW)
 [glfw](http://www.glfw.org/) (similar to GLUT, but newer. Creates the
 window and such)  
 
-Controls:  
-* mouse to look around
-* wasd to move around
-* q and e to rotate
-* x and z to raise and lower
+Controls:
+
+* mouse to look around  
+* wasd to move around  
+* q and e to rotate  
+* x and z to raise and lower  
 
 
 Created by Sean Hickey (Wisellama), 2014  
